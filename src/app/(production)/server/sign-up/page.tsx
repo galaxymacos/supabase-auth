@@ -1,18 +1,18 @@
 import React from "react";
-import { Input } from "@/components/ui/input";
+import { login, signup } from "@/app/(reference)/login/action";
 import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { login } from "@/app/(reference)/login/action";
 
-const SignInPage = () => {
-  const loginAction = async (formData: FormData) => {
+const SignupPage = () => {
+  const signUpAction = async (formData: FormData) => {
     "use server";
-    await login(formData, "/server");
+    await signup(formData, "/server");
   };
   return (
     <div className={"flex flex-col items-center justify-center h-screen"}>
       <form
-        action={loginAction}
+        action={signUpAction}
         className={"flex flex-col gap-y-3 items-center max-w-md w-full"}
       >
         <Label htmlFor={"email"}>Email</Label>
@@ -24,10 +24,10 @@ const SignInPage = () => {
           type={"password"}
           placeholder={""}
         />
-        <Button type={"submit"}>Sign in</Button>
+        <Button type={"submit"}>Sign up</Button>
       </form>
     </div>
   );
 };
 
-export default SignInPage;
+export default SignupPage;
